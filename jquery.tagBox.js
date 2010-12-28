@@ -15,6 +15,7 @@
             'keydown' : function(e) {
                 if(e.keyCode == 13) {
                     $(this).trigger("selectTag");
+                    e.preventDefault();
                 }
             }
         });

@@ -19,8 +19,7 @@
     <input class="tagger" name="three" value="lorem, ipsum">
     <script>
     $(".tagger").tagBox();
-    
-    $(".input input").autocomplete({
+    $(".tagbox .input input").autocomplete({
         source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"],
         select: function(e, ui) {
             e.preventDefault();
