@@ -1,0 +1,83 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, footer, header,
+hgroup, menu, nav, section, menu,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+body {width:600px; margin:20px auto; font:12px/1.2 Arial, sans-serif;}
+
+ul.tagbox {
+  background: #fff;
+  cursor: text;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 0 0 1px 3px;
+  min-height:48px;
+}
+ul.tagbox li.tag {
+  float: left;
+  line-height: 1;
+  padding: 3px 6px;
+  list-style-type: none;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+ul.tagbox li.tag {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  display:block;
+  border: 1px solid #cad8f3;
+  background: #dee7f8;
+  padding: 2px;
+  margin-bottom: 1px;
+  padding-right: 15px;
+  position: relative;
+}
+ul.tagbox li.input {display:block; float:left;}
+ul.tagbox input:focus {
+    border-color: #fff;
+}
+ul.tagbox input {
+  width: 50px;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  line-height:1.2;
+  padding: 3px 0;
+  font-size:12px;
+} 
+ul.tagbox a.close {
+  position: absolute;
+  right: 4px; top: 5px;
+  display: block;
+  text-indent:-9999px;
+  cursor:pointer;
+  width: 7px; height: 7px;
+  font-size: 1px;
+  background: url('close.gif'); }
+  
+ul.tagbox a.close:hover {
+  background-position: 7px;
+}
+
+.ui-autocomplete {border:1px solid #ddd; background:#fff; list-style:none; position: absolute; cursor: default;}
+.ui-autocomplete li a {display:block; padding:4px;}
+.ui-autocomplete li a.ui-state-hover,
+.ui-autocomplete li a:hover {background:#eee;}
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */

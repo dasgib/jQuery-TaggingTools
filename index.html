@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="tagbox.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+    <script src="jquery.autoGrowInput.js"></script>
+    <script src="jquery.tagBox.js"></script>
+    <title>Tagger</title>
+</head>
+<body>
+    <h1>Tagger Demo</h1>
+    <h2>1.</h2>
+    <input class="tagger" name="one" value="three word tag  ,      are, tags, pretty, awsome, stuff, jQuery, JavaScript & friends">
+    <h2>2.</h2>
+    <input class="tagger" name="two" value="these are tags delimited with spaces">
+    <h2>3.</h2>
+    <input class="tagger" name="three" value="lorem, ipsum">
+    <script>
+    $(".tagger").tagBox();
+    
+    $(".input input").autocomplete({
+        source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"],
+        select: function(e, ui) {
+            e.preventDefault();
+            if(e.keyCode != 13) {
+                $(this).val(ui.item.value);
+                $(this).trigger("selectTag");
+            }
+        }
+    });
+    </script>
+</body>
+</html>
