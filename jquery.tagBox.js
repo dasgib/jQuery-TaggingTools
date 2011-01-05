@@ -2,7 +2,9 @@
 *   Dependencies:
 *   ------------
 *   jquery.autoGrowInput.js
+*
 */
+
 (function($) {
     
     function TagBox(input) {
@@ -17,7 +19,7 @@
         self.tagInput = $('<input>', {
             'type' : 'text',
             'keydown' : function(e) {
-                if(e.keyCode == 13) {
+                if(e.keyCode == 13 || e.keyCode == 188) {
                     $(this).trigger("selectTag");
                     e.preventDefault();
                 }
@@ -51,6 +53,16 @@
         for(tag in tags) {
             self.addTag(tags[tag]);
         }
+        
+        // If a user started typing a tag and submitted form
+        input.parents("form").submit(function(e) {
+           var text = self.tagInput.val();
+           if(text) {
+               self.addTag(text);
+           }
+           self.tagInput.val("");
+           e.preventDefault();
+        });
     }
     
     TagBox.prototype = {
@@ -58,7 +70,8 @@
         addTag : function(label) {
             
             var self = this;
-            var tag = $('<li class="tag">' + label + '</li>');
+            // Add tag and handle <> html chars
+            var tag = $('<li class="tag">' + $('<div>').text(label).remove().html() + '</li>');
             
             this.tags.push(label);
 
