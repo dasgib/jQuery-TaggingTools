@@ -24,6 +24,9 @@
                     e.preventDefault();
                 }
             }
+            'blur' : function(e) {
+                $(this).trigger("selectTag");
+            }
         });
         
         self.tagInput.bind("selectTag", function() {
@@ -53,16 +56,6 @@
         for(tag in tags) {
             self.addTag(tags[tag]);
         }
-        
-        // If a user started typing a tag and submitted form
-        input.parents("form").submit(function(e) {
-           var text = self.tagInput.val();
-           if(text) {
-               self.addTag(text);
-           }
-           self.tagInput.val("");
-           e.preventDefault();
-        });
     }
     
     TagBox.prototype = {
