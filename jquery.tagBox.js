@@ -8,7 +8,11 @@
     function TagBox(input) {
     
         var self = this;
-        var tags = input.val().split(/\s*,\s*/);
+        var val = input.val();
+        var tags = []
+        if(val) {
+            tags = input.val().split(/\s*,\s*/);
+        }
         self.input = input
         self.tagInput = $('<input>', {
             'type' : 'text',
@@ -44,7 +48,7 @@
         self.inputHolder.append(self.tagInput);
         self.tagInput.autoGrowInput();
         
-        for(tag in tags) {    
+        for(tag in tags) {
             self.addTag(tags[tag]);
         }
     }
