@@ -23,7 +23,7 @@
                     $(this).trigger("selectTag");
                     e.preventDefault();
                 }
-            }
+            },
             'blur' : function(e) {
                 $(this).trigger("selectTag");
             }
