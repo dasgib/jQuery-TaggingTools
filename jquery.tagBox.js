@@ -1,8 +1,13 @@
 /*
+*   jQuery tagbox
+*   -------------
+*   Released under the MIT, BSD, and GPL Licenses.
+*   Copyright 2011 Daniel Stocks
+*
 *   Dependencies:
 *   ------------
 *   jquery.autoGrowInput.js
-*
+*  
 */
 
 (function($) {
@@ -25,7 +30,7 @@
                 }
             },
             'blur' : function(e) {
-                $(this).trigger("selectTag");
+                $(this).val("");
             }
         });
         
