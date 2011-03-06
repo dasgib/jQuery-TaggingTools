@@ -28,7 +28,7 @@ The index.html file has a fully working example. View Source!
 Demo
 ----
 
-I've setup a demo at my website: http://webcloud.dev/code/jQuery-TaggingTools/.
+I've setup a demo at my website: http://webcloud.se/code/jQuery-TaggingTools/
 
 Please let me know if you find any bugs.
 
