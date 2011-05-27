@@ -12,19 +12,29 @@
 
 (function($) {
     
-    function TagBox(input) {
-    
+    function TagBox(input, options) {
+
         var self = this;
+        
+        self.options = options
+        self.delimit_key = 188
+        self.delimit_expr = /\s*,\s*/
+
+        if(options.delimit_by_space) {
+            self.delimit_key = 32 
+            self.delimit_expr = /\s+/
+        }
+
         var val = input.val();
         var tags = []
-        if(val) {
-            tags = input.val().split(/\s*,\s*/);
+        if(val) { 
+            tags = input.val().split(self.delimit_expr);
         }
         self.input = input
         self.tagInput = $('<input>', {
             'type' : 'text',
             'keydown' : function(e) {
-                if(e.keyCode == 13 || e.keyCode == 188) {
+                if(e.keyCode == 13 || e.keyCode == self.delimit_key ) {
                     $(this).trigger("selectTag");
                     e.preventDefault();
                 }
@@ -93,21 +103,26 @@
         },
         updateInput : function() {
             
-            this.input.val(this.tags.join(","));
+            var tags;
+            if(this.options.delimit_by_space) {
+                tags = this.tags.join(" ");
+            } else {
+                tags = this.tags.join(",");
+            }
+            this.input.val(tags);
         }
     }
     
     $.fn.tagBox = function(options) {
 
         var defaults = {
-            delimiter : "comma"
+            delimit_by_space : false 
         }
-
         var options = $.extend(defaults, options);
         return this.each(function() {
             
             var input = $(this);
-            var tagbox = new TagBox(input);
+            var tagbox = new TagBox(input, options);
         });
     }
 })(jQuery);

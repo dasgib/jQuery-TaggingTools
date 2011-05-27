@@ -17,9 +17,9 @@
 
         <h2>2. A tag box, with tags delimited by spaces</h2>
         <pre><code>$(".tagbox").tagbox({ 
-    delimiter: "space"
+    delimit_by_space: true
 });</code></pre>
-        <input class="tagger" name="two" value="these are tags delimited with spaces">
+        <input class="space_tagger" name="two" value="these are tags   delimited with spaces">
 
         <h2>3. Hooked up with jQuery UI autocomplete </h2>
         <pre><code>$(".tagbox").tagbox()
@@ -37,6 +37,10 @@
 
         // The tagbox plugin
         $(".tagger").tagBox();
+
+        $(".space_tagger").tagBox({
+            delimit_by_space : true
+        });
 
         // The autocomplete for the last tagbox
         $(".tagbox:last .input input").autocomplete({
