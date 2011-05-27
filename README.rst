@@ -23,7 +23,7 @@ Although I've used jQuery UI in my code, the tagBox is built with a clean API to
 Usage
 -----
 
-The index.html file has a fully working example. View Source!
+The demo.html file has a fully working example. View Source!
 
 Demo
 ----

@@ -68,7 +68,6 @@
         addTag : function(label) {
             
             var self = this;
-            // Add tag and handle <> html chars
             var tag = $('<li class="tag">' + $('<div>').text(label).remove().html() + '</li>');
             
             this.tags.push(label);
@@ -98,8 +97,13 @@
         }
     }
     
-    $.fn.tagBox = function() {
-        
+    $.fn.tagBox = function(options) {
+
+        var defaults = {
+            delimiter : "comma"
+        }
+
+        var options = $.extend(defaults, options);
         return this.each(function() {
             
             var input = $(this);
