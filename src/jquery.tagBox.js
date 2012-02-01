@@ -37,6 +37,9 @@
                 if(e.keyCode == 13 || e.keyCode == self.delimit_key ) {
                     $(this).trigger("selectTag");
                     e.preventDefault();
+                } else if (e.keyCode == 8 && $(this).val() == "" && self.tags.length > 0) {
+                    self.removeTag(self.tags.length-1);
+                    e.preventDefault();
                 }
             },
             'blur' : function(e) {
