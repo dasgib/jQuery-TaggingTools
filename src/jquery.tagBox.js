@@ -53,6 +53,10 @@
             }
             self.addTag($(this).val());
             $(this).val("");
+        }).bind("focus", function() {
+            self.tagbox.addClass("focused");
+        }).bind("blur", function() {
+            self.tagbox.removeClass("focused");
         });
         
         self.tagbox = $('<ul>', {
