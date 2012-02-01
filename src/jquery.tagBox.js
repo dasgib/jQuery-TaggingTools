@@ -54,13 +54,13 @@
             self.addTag($(this).val());
             $(this).val("");
         }).bind("focus", function() {
-            self.tagbox.addClass("focused");
+            self.tagbox.addClass(self.options.css_classes.tag_box_focus);
         }).bind("blur", function() {
-            self.tagbox.removeClass("focused");
+            self.tagbox.removeClass(self.options.css_classes.tag_box_focus);
         });
         
         self.tagbox = $('<ul>', {
-            "class" : "tagbox",
+            "class" : self.options.css_classes.tag_box,
             click : function(e) {
                 self.tagInput.focus();
             }
@@ -70,7 +70,7 @@
         
         input.after(self.tagbox).hide();
 
-        self.inputHolder = $('<li class="input">');
+        self.inputHolder = $('<li>').addClass(self.options.css_classes.input_item);
         self.tagbox.append(self.inputHolder);
         self.inputHolder.append(self.tagInput);
         self.tagInput.autoGrowInput();
@@ -85,14 +85,14 @@
         addTag : function(label) {
             
             var self = this;
-            var tag = $('<li class="tag">' + $('<div>').text(label).remove().html() + '</li>');
+            var tag = $('<li>' + $('<div>').text(label).remove().html() + '</li>').addClass(self.options.css_classes.tag);
             
             this.tags.push(label);
 
             tag.append($('<a>', {
                 "href" : "#",
-                "class": "close",
-                "text": "close",
+                "class": self.options.css_classes.close,
+                "text": self.options.close_text,
                 click: function(e) {
                     e.preventDefault();
                     var index = self.tagbox.find("li").index($(this).parent());
@@ -123,7 +123,15 @@
     $.fn.tagBox = function(options) {
 
         var defaults = {
-            delimit_by_space : false 
+            delimit_by_space : false,
+            close_text : 'close',
+            css_classes : {
+                tag_box : 'tagbox',
+                tag : 'tag',
+                input_item : 'input',
+                close : 'close',
+                tag_box_focus : 'focused'
+            }
         }
         var options = $.extend(defaults, options);
         return this.each(function() {
