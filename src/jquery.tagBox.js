@@ -43,6 +43,8 @@
                 }
             },
             'blur' : function(e) {
+                var v = $(this).val();
+                if (v != "") self.addTag(v);
                 $(this).val("");
             }
         });
